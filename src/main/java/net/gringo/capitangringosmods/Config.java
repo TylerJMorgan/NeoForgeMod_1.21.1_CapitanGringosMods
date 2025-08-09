@@ -1,4 +1,4 @@
-package net.capitangringo.tutorialmod;
+package net.gringo.capitangringosmods;
 
 import java.util.List;
 
