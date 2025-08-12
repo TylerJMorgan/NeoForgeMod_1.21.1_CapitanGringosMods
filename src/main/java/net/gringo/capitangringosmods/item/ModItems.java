@@ -18,6 +18,7 @@ public class ModItems {
     // This line takes care of the registration of the item/it registers a new item (4/4)
     public static final DeferredItem<Item> BISMUTH = ITEMS.register("bismuth", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.register("raw_bismuth", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PEBBLE = ITEMS.register("pebble", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
