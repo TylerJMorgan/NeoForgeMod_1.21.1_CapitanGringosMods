@@ -1,5 +1,8 @@
 {
     "item.capitangringosmods.bismuth": "Bismuth",
     "item.capitangringosmods.raw_bismuth": "Raw Bismuth",
-    "item.capitangringosmods.pebble": "Pebble"
+    "item.capitangringosmods.pebble": "Pebble",
+    "item.capitangringosmods.slingshot": "Slingshot",
+    
+    "creativetab.tutorialmod.slingshot_items": "Slingshot Items"
 }
