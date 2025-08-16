@@ -1,0 +1,6 @@
+{
+    "parent": "capitangringosmods:item/slingshot",
+    "textures": {
+        "layer0": "capitangringosmods:item/slingshot_pulling_1"
+    }
+}

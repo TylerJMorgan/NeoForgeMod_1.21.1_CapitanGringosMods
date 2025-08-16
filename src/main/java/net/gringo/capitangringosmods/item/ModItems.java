@@ -1,6 +1,7 @@
 package net.gringo.capitangringosmods.item;
 
 import net.gringo.capitangringosmods.CapitanGringosMods;
+import net.gringo.capitangringosmods.item.custom.SlingshotItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -19,7 +20,8 @@ public class ModItems {
     public static final DeferredItem<Item> BISMUTH = ITEMS.register("bismuth", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.register("raw_bismuth", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> PEBBLE = ITEMS.register("pebble", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot",
+            () -> new SlingshotItem(new Item.Properties().durability(500)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

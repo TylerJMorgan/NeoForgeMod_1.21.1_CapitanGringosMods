@@ -1,5 +1,6 @@
 package net.gringo.capitangringosmods;
 
+import net.gringo.capitangringosmods.entity.ModEntities;
 import net.gringo.capitangringosmods.item.ModCreativeModeTabs;
 import net.gringo.capitangringosmods.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -39,6 +40,8 @@ public class CapitanGringosMods {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+
+        ModEntities.ENTITY_TYPES.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

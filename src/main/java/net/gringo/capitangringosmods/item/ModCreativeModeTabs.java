@@ -16,7 +16,7 @@ public class ModCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> SLINGSHOT_ITEMS_TAB = CREATIVE_MODE_TAB.register("slingshot_items_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SLINGSHOT.get()))
-                    .title(Component.translatable("creativetab.tutorialmod.slingshot_items"))
+                    .title(Component.translatable("creativetab.capitangringosmods.slingshot_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SLINGSHOT);
                         output.accept(ModItems.PEBBLE);
