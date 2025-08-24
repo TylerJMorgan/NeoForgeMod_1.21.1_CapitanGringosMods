@@ -63,6 +63,8 @@ public class CapitanGringosMods {
             event.accept(ModItems.SLINGSHOT);
             event.accept(ModItems.POISON_PEBBLE);
             event.accept(ModItems.POISON_PASTE);
+            event.accept(ModItems.STRONG_POISON_PEBBLE);
+            event.accept(ModItems.STRONG_POISON_PASTE);
         }
     }
 

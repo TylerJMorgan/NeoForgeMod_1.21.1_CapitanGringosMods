@@ -2,6 +2,7 @@ package net.gringo.capitangringosmods.item.custom;
 
 import net.gringo.capitangringosmods.entity.PebbleEntity;
 import net.gringo.capitangringosmods.entity.PoisonPebbleEntity;
+import net.gringo.capitangringosmods.entity.StrongPoisonPebbleEntity;
 import net.gringo.capitangringosmods.item.ModItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -53,6 +54,10 @@ public class SlingshotItem extends BowItem {
                             PebbleEntity pebble = new PebbleEntity(level, player, pebbleStack.copy());
                             pebble.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, power * 2.5F, 1.0F);
                             level.addFreshEntity(pebble);
+                        } else if (ammoItem == ModItems.STRONG_POISON_PEBBLE.get()) {
+                            StrongPoisonPebbleEntity pebble = new StrongPoisonPebbleEntity(level, player, pebbleStack.copy());
+                            pebble.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, power * 2.5F, 1.0F);
+                            level.addFreshEntity(pebble);
                         }
                         stack.hurtAndBreak(this.getDurabilityUse(pebbleStack), living, EquipmentSlot.MAINHAND);
                     }
@@ -76,13 +81,15 @@ public class SlingshotItem extends BowItem {
 
     private ItemStack findAmmo(Player player) {
         if (player.getOffhandItem().is(ModItems.PEBBLE.get())
-            || player.getOffhandItem().is(ModItems.POISON_PEBBLE.get())) {
+            || player.getOffhandItem().is(ModItems.POISON_PEBBLE.get())
+            || player.getOffhandItem().is(ModItems.STRONG_POISON_PEBBLE.get())) {
             return player.getOffhandItem();
         }
 
         for (ItemStack stack : player.getInventory().items) {
             if (stack.is(ModItems.PEBBLE.get())
-                || stack.is(ModItems.POISON_PEBBLE.get())) {
+                || stack.is(ModItems.POISON_PEBBLE.get())
+                || stack.is(ModItems.STRONG_POISON_PEBBLE.get())) {
                 return stack;
             }
         }

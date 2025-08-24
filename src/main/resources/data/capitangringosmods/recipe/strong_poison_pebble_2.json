@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "key": {
+        "P": {
+            "item": "capitangringosmods:poison_pebble"
+        },
+        "X": {
+            "item": "capitangringosmods:strong_poison_paste"
+        }
+    },
+    "pattern": [
+        "PPP",
+        "PXP",
+        "PPP"
+    ],
+    "result": {
+        "count": 8,
+        "id": "capitangringosmods:strong_poison_pebble"
+    }
+}

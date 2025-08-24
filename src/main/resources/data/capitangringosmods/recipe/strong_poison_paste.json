@@ -9,11 +9,14 @@
             "item": "minecraft:rotten_flesh"
         },
         {
+            "item": "minecraft:poisonous_potato"
+        },
+        {
             "item": "minecraft:bowl"
         }
     ],
     "result": {
         "count": 1,
-        "id": "capitangringosmods:poison_paste"
+        "id": "capitangringosmods:strong_poison_paste"
     }
 }

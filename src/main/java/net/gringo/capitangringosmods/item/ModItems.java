@@ -3,6 +3,7 @@ package net.gringo.capitangringosmods.item;
 import net.gringo.capitangringosmods.CapitanGringosMods;
 import net.gringo.capitangringosmods.item.custom.PoisonPasteItem;
 import net.gringo.capitangringosmods.item.custom.SlingshotItem;
+import net.gringo.capitangringosmods.item.custom.StrongPoisonPasteItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -25,8 +26,12 @@ public class ModItems {
             () -> new SlingshotItem(new Item.Properties().durability(150)));
     public static final DeferredItem<Item> POISON_PEBBLE = ITEMS.register("poison_pebble",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> STRONG_POISON_PEBBLE = ITEMS.register("strong_poison_pebble",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> POISON_PASTE = ITEMS.register("poison_paste",
-            () -> new PoisonPasteItem(new Item.Properties().stacksTo(16)));
+            () -> new PoisonPasteItem(new Item.Properties().stacksTo(16).food(PoisonPasteItem.POISON_PASTE_FOOD)));
+    public static final DeferredItem<Item> STRONG_POISON_PASTE = ITEMS.register("strong_poison_paste",
+            () -> new StrongPoisonPasteItem(new Item.Properties().stacksTo(16).food(StrongPoisonPasteItem.STRONG_POISON_PASTE_FOOD)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

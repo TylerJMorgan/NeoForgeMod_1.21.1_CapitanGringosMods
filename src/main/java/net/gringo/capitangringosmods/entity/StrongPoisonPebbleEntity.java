@@ -10,27 +10,27 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class PoisonPebbleEntity extends PebbleEntity {
-    public PoisonPebbleEntity(EntityType<? extends PoisonPebbleEntity> type, Level level) {
+public class StrongPoisonPebbleEntity extends PoisonPebbleEntity {
+    public StrongPoisonPebbleEntity(EntityType<? extends StrongPoisonPebbleEntity> type, Level level) {
         super(type, level);
     }
 
-    public PoisonPebbleEntity(Level level, LivingEntity shooter, ItemStack stack) {
+    public StrongPoisonPebbleEntity(Level level, LivingEntity shooter, ItemStack stack) {
         super(level, shooter, stack);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItems.POISON_PEBBLE.get();
+        return ModItems.STRONG_POISON_PEBBLE.get();
     }
 
     @Override
     protected void onHitEntity(EntityHitResult hit) {
         super.onHitEntity(hit);
-
+        // Add a stronger poison effect
         if (!level().isClientSide && hit.getEntity() instanceof LivingEntity target) {
-            // Apply poison for 5 seconds (100 ticks) at amplifier 0 (Poison I)
-            target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
+            // Apply poison for 5 seconds (100 ticks) at amplifier 1 (Poison II)
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
         }
     }
 }

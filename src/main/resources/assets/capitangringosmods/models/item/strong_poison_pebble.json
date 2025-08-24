@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "capitangringosmods:item/strong_poison_pebble"
+    }
+}

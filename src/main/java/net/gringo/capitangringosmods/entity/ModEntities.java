@@ -27,5 +27,13 @@ public final class ModEntities {
                             .updateInterval(10)
                             .build(CapitanGringosMods.MOD_ID + ":poison_pebble"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<StrongPoisonPebbleEntity>> STRONG_POISON_PEBBLE =
+            ENTITY_TYPES.register("strong_poison_pebble",
+                    () -> EntityType.Builder.<StrongPoisonPebbleEntity>of(StrongPoisonPebbleEntity::new, MobCategory.MISC)
+                            .sized(0.25f, 0.25f)
+                            .clientTrackingRange(4)
+                            .updateInterval(10)
+                            .build(CapitanGringosMods.MOD_ID + ":strong_poison_pebble"));
+
     private ModEntities() {}
 }

@@ -7,26 +7,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-public class PoisonPasteItem extends Item {
-    public PoisonPasteItem(Properties properties) {
-        super(properties);
+public class StrongPoisonPasteItem extends PoisonPasteItem {
+    public StrongPoisonPasteItem(Properties properties) {
+        super(properties); // Inherits crafting behavior from base class
     }
 
-    public static final FoodProperties POISON_PASTE_FOOD = new FoodProperties.Builder()
+    public static final FoodProperties STRONG_POISON_PASTE_FOOD = new FoodProperties.Builder()
             .nutrition(6) // how much hunger to restore
             .saturationModifier(0.2F)
             .usingConvertsTo(Items.BOWL) // return bowl after use/crafting
-            .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 0), 1.0F) // always poisons
+            .effect(() -> new MobEffectInstance(MobEffects.POISON, 200, 1), 1.0F) // always poisons
             .alwaysEdible() // so you can eat it even when full
             .build();
-
-    @Override
-    public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getCraftingRemainingItem(ItemStack stack) {
-        return new ItemStack(Items.BOWL);
-    }
 }

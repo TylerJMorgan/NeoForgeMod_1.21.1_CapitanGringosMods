@@ -22,6 +22,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PEBBLE);
                         output.accept(ModItems.POISON_PEBBLE);
                         output.accept(ModItems.POISON_PASTE);
+                        output.accept(ModItems.STRONG_POISON_PEBBLE);
+                        output.accept(ModItems.STRONG_POISON_PASTE);
                     })
                     .build());
 
