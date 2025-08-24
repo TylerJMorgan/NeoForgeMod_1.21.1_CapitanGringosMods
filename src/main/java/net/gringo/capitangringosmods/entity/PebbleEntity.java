@@ -20,7 +20,7 @@ public class PebbleEntity extends ThrowableItemProjectile {
 
     public PebbleEntity(Level level, LivingEntity shooter, ItemStack stack) {
         super(ModEntities.PEBBLE.get(), shooter, level);
-        this.setItem(stack); // makes the entity render as the pebble item
+        this.setItem(stack); // makes the entity render as the pebble item, very important: this tells MC what to render
     }
 
     @Override

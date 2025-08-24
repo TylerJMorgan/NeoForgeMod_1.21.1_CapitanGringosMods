@@ -1,6 +1,7 @@
 package net.gringo.capitangringosmods.item;
 
 import net.gringo.capitangringosmods.CapitanGringosMods;
+import net.gringo.capitangringosmods.item.custom.PoisonPasteItem;
 import net.gringo.capitangringosmods.item.custom.SlingshotItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -21,7 +22,11 @@ public class ModItems {
     public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.register("raw_bismuth", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> PEBBLE = ITEMS.register("pebble", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SLINGSHOT = ITEMS.register("slingshot",
-            () -> new SlingshotItem(new Item.Properties().durability(500)));
+            () -> new SlingshotItem(new Item.Properties().durability(150)));
+    public static final DeferredItem<Item> POISON_PEBBLE = ITEMS.register("poison_pebble",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> POISON_PASTE = ITEMS.register("poison_paste",
+            () -> new PoisonPasteItem(new Item.Properties().stacksTo(16)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

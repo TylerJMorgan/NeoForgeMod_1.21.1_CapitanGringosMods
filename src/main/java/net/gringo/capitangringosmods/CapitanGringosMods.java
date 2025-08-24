@@ -61,6 +61,8 @@ public class CapitanGringosMods {
             event.accept(ModItems.RAW_BISMUTH);
             event.accept(ModItems.PEBBLE);
             event.accept(ModItems.SLINGSHOT);
+            event.accept(ModItems.POISON_PEBBLE);
+            event.accept(ModItems.POISON_PASTE);
         }
     }
 

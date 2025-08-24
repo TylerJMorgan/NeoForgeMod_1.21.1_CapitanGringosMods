@@ -1,13 +1,18 @@
 package net.gringo.capitangringosmods.item.custom;
 
 import net.gringo.capitangringosmods.entity.PebbleEntity;
+import net.gringo.capitangringosmods.entity.PoisonPebbleEntity;
 import net.gringo.capitangringosmods.item.ModItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -17,10 +22,21 @@ public class SlingshotItem extends BowItem {
     }
 
     @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (!findAmmo(player).isEmpty() || player.getAbilities().instabuild) {
+            player.startUsingItem(hand); // starts pull animation
+            return InteractionResultHolder.consume(stack);
+        }
+        return InteractionResultHolder.fail(stack);
+    }
+
+    @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
         if (living instanceof Player player) {
             boolean creative = player.getAbilities().instabuild;
             ItemStack pebbleStack = findAmmo(player);
+            Item ammoItem = pebbleStack.getItem();
 
             int charge = this.getUseDuration(stack, living) - timeLeft;
             float power = getPowerForTime(charge);
@@ -29,9 +45,16 @@ public class SlingshotItem extends BowItem {
                 if (!pebbleStack.isEmpty() || creative) {
                     if (!level.isClientSide) {
                         // give the entity the actual pebble item so it renders properly
-                        PebbleEntity pebble = new PebbleEntity(level, player, new ItemStack(ModItems.PEBBLE.get()));
-                        pebble.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, power * 2.5F, 1.0F);
-                        level.addFreshEntity(pebble);
+                        if (ammoItem == ModItems.POISON_PEBBLE.get()) {
+                            PoisonPebbleEntity poison = new PoisonPebbleEntity(level, player, pebbleStack.copy());
+                            poison.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, power * 2.5F, 1.0F);
+                            level.addFreshEntity(poison);
+                        } else if (ammoItem == ModItems.PEBBLE.get()) {
+                            PebbleEntity pebble = new PebbleEntity(level, player, pebbleStack.copy());
+                            pebble.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, power * 2.5F, 1.0F);
+                            level.addFreshEntity(pebble);
+                        }
+                        stack.hurtAndBreak(this.getDurabilityUse(pebbleStack), living, EquipmentSlot.MAINHAND);
                     }
 
                     level.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -52,12 +75,14 @@ public class SlingshotItem extends BowItem {
     }
 
     private ItemStack findAmmo(Player player) {
-        if (player.getOffhandItem().is(ModItems.PEBBLE.get())) {
+        if (player.getOffhandItem().is(ModItems.PEBBLE.get())
+            || player.getOffhandItem().is(ModItems.POISON_PEBBLE.get())) {
             return player.getOffhandItem();
         }
 
         for (ItemStack stack : player.getInventory().items) {
-            if (stack.is(ModItems.PEBBLE.get())) {
+            if (stack.is(ModItems.PEBBLE.get())
+                || stack.is(ModItems.POISON_PEBBLE.get())) {
                 return stack;
             }
         }

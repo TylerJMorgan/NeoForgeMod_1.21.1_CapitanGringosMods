@@ -20,6 +20,8 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SLINGSHOT);
                         output.accept(ModItems.PEBBLE);
+                        output.accept(ModItems.POISON_PEBBLE);
+                        output.accept(ModItems.POISON_PASTE);
                     })
                     .build());
 

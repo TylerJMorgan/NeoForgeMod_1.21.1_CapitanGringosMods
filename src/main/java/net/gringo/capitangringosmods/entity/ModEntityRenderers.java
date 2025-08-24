@@ -8,5 +8,6 @@ public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.PEBBLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.POISON_PEBBLE.get(), ThrownItemRenderer::new);
     }
 }

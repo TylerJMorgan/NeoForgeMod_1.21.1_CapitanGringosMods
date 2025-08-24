@@ -22,6 +22,7 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.PEBBLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.POISON_PEBBLE.get(), ThrownItemRenderer::new);
         // Or (both work), but prefer event.registerEntityRenderer for mod bus:
         // EntityRenderers.register(ModEntities.PEBBLE.get(), ThrownItemRenderer::new);
     }
