@@ -31,8 +31,16 @@ public class PebbleEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult hit) {
         super.onHitEntity(hit);
-        hit.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), 3.0F); // stronger than snowball
+
         if (!level().isClientSide) {
+            // Deal damage
+            hit.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), 3.0F);
+
+            // If the pebble itself is burning, set the target on fire
+            if (this.isOnFire()) {
+                hit.getEntity().setRemainingFireTicks(100); // just like flame arrows
+            }
+
             this.discard();
         }
     }
@@ -44,5 +52,9 @@ public class PebbleEntity extends ThrowableItemProjectile {
             level().playSound(null, blockPosition(), SoundEvents.STONE_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
             this.discard();
         }
+    }
+
+    public void setSecondsOnFire(int seconds) {
+        this.setRemainingFireTicks(seconds * 20);
     }
 }
